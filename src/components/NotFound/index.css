@@ -1,0 +1,183 @@
+.container {
+  position: absolute;
+  width: 1440px;
+  height: 1024px;
+  left: 0px;
+  top: 0px;
+
+  background: #161625;
+}
+
+.img {
+  position: absolute;
+  left: 34.44%;
+  right: 34.44%;
+  top: 22.46%;
+  bottom: 48.66%;
+
+  background: rgba(249, 248, 248, 0.1);
+}
+
+.heading {
+  position: absolute;
+  width: 261px;
+  height: 48px;
+  left: 590px;
+  top: 562px;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 48px;
+  /* identical to box height, or 150% */
+
+  text-align: center;
+
+  /* Light / blue-gray / 300 */
+
+  color: #cbd5e1;
+}
+
+.paragraph {
+  position: absolute;
+  width: 483px;
+  height: 64px;
+  left: 479px;
+  top: 626px;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 32px;
+  /* or 160% */
+
+  text-align: center;
+
+  /* Light / blue-gray / 400 */
+
+  color: #94a3b8;
+}
+
+.button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 24px;
+
+  position: static;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+
+  /* Light / blue / 600 */
+
+  background: #2563eb;
+  border-radius: 12px;
+
+  /* Inside Auto Layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 0px 0px;
+}
+.button-text {
+  position: static;
+  width: 40px;
+  height: 24px;
+  left: 0px;
+  top: 0px;
+
+  /* Action / Button / Medium */
+
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  /* identical to box height, or 171% */
+
+  /* Light / base / white */
+
+  color: #ffffff;
+
+  /* Inside Auto Layout */
+
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  margin: 0px 8px;
+}
+
+.button-container {
+  position: absolute;
+  left: 45.44%;
+  right: 34.44%;
+  top: 71.46%;
+  bottom: 48.66%;
+}
+v1-container {
+  position: absolute;
+  width: 1440px;
+  height: 1024px;
+  left: 0px;
+  top: 0px;
+  border-radius: 5px;
+}
+.v1 {
+  position: absolute;
+  left: 38.84%;
+  right: 58.26%;
+  top: 34.37%;
+  bottom: 56.87%;
+  border-radius: 20px;
+  background: #f2f2f2;
+}
+.v2 {
+  position: absolute;
+  left: 40.21%;
+  right: 59.63%;
+  top: 37.52%;
+  bottom: 48.65%;
+
+  background: #e4e4e4;
+}
+.v3 {
+  position: absolute;
+  left: 42.15%;
+  right: 54.17%;
+  top: 29.77%;
+  bottom: 59.1%;
+  border-radius: 25px;
+  background: #f2f2f2;
+}
+.v4 {
+  position: absolute;
+  left: 43.89%;
+  right: 55.91%;
+  top: 33.77%;
+  bottom: 48.66%;
+
+  background: #e4e4e4;
+}
+.v5 {
+  position: absolute;
+  left: 46.25%;
+  right: 47.33%;
+  top: 36.33%;
+  bottom: 49.85%;
+
+  background: #161625;
+}
+.v6 {
+  position: absolute;
+  left: 46.31%;
+  right: 50.63%;
+  top: 29.78%;
+  bottom: 68.14%;
+
+  background: #f2f2f2;
+}
