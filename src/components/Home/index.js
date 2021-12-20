@@ -1,4 +1,5 @@
 import {Component} from 'react'
+import Cookies from 'js-cookie'
 import {BsSearch} from 'react-icons/bs'
 import StateProfile from '../StateProfile'
 import Header from '../Header'
@@ -155,8 +156,66 @@ const statesList = [
 class Home extends Component {
   state = {searchInput: ''}
 
+  componentDidMount() {
+    this.getStates()
+  }
+
+  getStates = async () => {
+    const jwtToken = Cookies.get('jwt_token')
+    const apiUrl = 'https://apis.ccbp.in/covid19-state-wise-data'
+    const options = {
+      headers: {
+        Authorization: `Bearer ${jwtToken}`,
+      },
+      method: 'GET',
+    }
+    const response = await fetch(apiUrl, options)
+    let fetchedData = null
+    if (response.ok === true) {
+      fetchedData = await response.json()
+    }
+    return fetchedData
+  }
+
+  convertObjectsDataIntoListItemsUsingForInMethod = () => {
+    const resultList = []
+    // getting keys of an object object
+    const keyNames = Object.keys(this.getStates())
+
+    keyNames.forEach(keyName => {
+      console.log(keyNames)
+      let data
+      if (data[keyName]) {
+        const {total} = data[keyName]
+        // if the state's covid data is available we will store it or we will store 0
+
+        const confirmed = total.confirmed ? total.confirmed : 0
+        const deceased = total.deceased ? total.deceased : 0
+        const recovered = total.recovered ? total.recovered : 0
+        const tested = total.tested ? total.tested : 0
+        const population = data[keyName].meta.population
+          ? data[keyName].meta.population
+          : 0
+        resultList.push({
+          stateCode: keyName,
+          name: statesList.find(state => state.stat_Code === keyName)
+            .state_name,
+          confirmed,
+          deceased,
+          recovered,
+          tested,
+          population,
+          active: confirmed - (deceased + recovered),
+        })
+        console.log(resultList)
+      }
+    })
+    return resultList
+  }
+
   onChangeInput = event => {
     this.setState({searchInput: event.target.value})
+    console.log(event.target.value)
   }
 
   updateSearchInput = value => {
@@ -174,7 +233,7 @@ class Home extends Component {
         state.stateCode.toLowerCase().includes(searchInput.toLowerCase()) ||
         state.stateName.toLowerCase().includes(searchInput.toLowerCase()),
     )
-    console.log(filteredData)
+
     if (searchInput !== '') {
       return (
         <ul className="list-container">
@@ -229,9 +288,9 @@ class Home extends Component {
   )
 
   renderListOfStates = () => (
-    <div className="state-container">
+    <div className="states-container">
       <div>
-        <p className="states">States/UT</p>
+        <p className="states-ut">States/UT</p>
         <button type="button">
           <img
             src="https://res.cloudinary.com/drnjmmqvg/image/upload/v1639922969/sort_iok4kp.png"
@@ -253,6 +312,7 @@ class Home extends Component {
         <p className="total-population">Population</p>
       </div>
       <hr className="line" />
+      {this.convertObjectsDataIntoListItemsUsingForInMethod()}
     </div>
   )
 

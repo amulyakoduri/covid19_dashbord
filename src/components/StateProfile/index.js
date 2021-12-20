@@ -9,19 +9,19 @@ const StateProfile = props => {
   }
 
   return (
-    <li className="state-container">
-      <button className="container" type="button" onClick={onClickSuggestion}>
-        <p className="state">{stateName}</p>
-        <div className="code-container">
-          <p className="code">{stateCode}</p>
-          <div className="img-container">
-            <img
-              src="https://res.cloudinary.com/drnjmmqvg/image/upload/v1639650026/Shape_dk4zae.png"
-              className="img"
-              alt="img"
-            />
-          </div>
-        </div>
+    <li className="suggestion-list">
+      <p className="state-name">{stateName}</p>
+      <button
+        type="button"
+        onClick={onClickSuggestion}
+        className="button-container"
+      >
+        <p className="state-code">{stateCode}</p>
+        <img
+          src="https://res.cloudinary.com/drnjmmqvg/image/upload/v1640018348/Line_lwzjio.png"
+          className="button-img"
+          alt="button img"
+        />
       </button>
     </li>
   )
