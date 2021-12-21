@@ -170,7 +170,7 @@ class Home extends Component {
       method: 'GET',
     }
     const response = await fetch(apiUrl, options)
-    let fetchedData = null
+    let fetchedData
     if (response.ok === true) {
       fetchedData = await response.json()
     }
@@ -180,11 +180,11 @@ class Home extends Component {
   convertObjectsDataIntoListItemsUsingForInMethod = () => {
     const resultList = []
     // getting keys of an object object
-    const keyNames = Object.keys(this.getStates())
 
+    const data = this.getStates()
+    console.log(data)
+    const keyNames = Object.keys(data)
     keyNames.forEach(keyName => {
-      console.log(keyNames)
-      let data
       if (data[keyName]) {
         const {total} = data[keyName]
         // if the state's covid data is available we will store it or we will store 0
@@ -209,6 +209,7 @@ class Home extends Component {
         })
         console.log(resultList)
       }
+      console.log(resultList)
     })
     return resultList
   }
@@ -312,7 +313,7 @@ class Home extends Component {
         <p className="total-population">Population</p>
       </div>
       <hr className="line" />
-      {this.convertObjectsDataIntoListItemsUsingForInMethod()}
+      <ul>{this.convertObjectsDataIntoListItemsUsingForInMethod()}</ul>
     </div>
   )
 

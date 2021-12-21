@@ -4,6 +4,14 @@ import './index.css'
 const Header = props => {
   const {isActive} = props
   const activeText = isActive ? 'active-text' : ''
+
+  const onClickOptions = () => (
+    <ul>
+      <li>Home</li>
+      <li>About</li>
+    </ul>
+  )
+
   return (
     <nav>
       <div className="nav-container">
@@ -20,6 +28,20 @@ const Header = props => {
             <h1 className={`about-text ${activeText}`}>About</h1>
           </Link>
         </ul>
+      </div>
+      <div className="mobile-nav-container">
+        <Link to="/">
+          <h1 className="logo-mobile-text">
+            COVID19<span className="india-text">INDIA</span>
+          </h1>
+          <button type="button" onClick={onClickOptions}>
+            <img
+              src="https://res.cloudinary.com/drnjmmqvg/image/upload/v1640070790/add-to-queue_1_yprekp.png"
+              className="options-img"
+              alt="options img"
+            />
+          </button>
+        </Link>
       </div>
     </nav>
   )
