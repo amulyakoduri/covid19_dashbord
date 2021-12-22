@@ -6,9 +6,13 @@ const Header = props => {
   const activeText = isActive ? 'active-text' : ''
 
   const onClickOptions = () => (
-    <ul>
-      <li>Home</li>
-      <li>About</li>
+    <ul className="">
+      <Link to="/">
+        <li className="mobile-home">Home</li>
+      </Link>
+      <Link to="/about">
+        <li className="mobile-about">About</li>
+      </Link>
     </ul>
   )
 

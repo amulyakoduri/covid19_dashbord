@@ -1,5 +1,4 @@
 import {Component} from 'react'
-import Cookies from 'js-cookie'
 import {BsSearch} from 'react-icons/bs'
 import StateProfile from '../StateProfile'
 import Header from '../Header'
@@ -161,15 +160,7 @@ class Home extends Component {
   }
 
   getStates = async () => {
-    const jwtToken = Cookies.get('jwt_token')
-    const apiUrl = 'https://apis.ccbp.in/covid19-state-wise-data'
-    const options = {
-      headers: {
-        Authorization: `Bearer ${jwtToken}`,
-      },
-      method: 'GET',
-    }
-    const response = await fetch(apiUrl, options)
+    const response = await fetch('https://apis.ccbp.in/covid19-state-wise-data')
     let fetchedData
     if (response.ok === true) {
       fetchedData = await response.json()
@@ -180,10 +171,10 @@ class Home extends Component {
   convertObjectsDataIntoListItemsUsingForInMethod = () => {
     const resultList = []
     // getting keys of an object object
-
     const data = this.getStates()
     console.log(data)
     const keyNames = Object.keys(data)
+    console.log(keyNames)
     keyNames.forEach(keyName => {
       if (data[keyName]) {
         const {total} = data[keyName]
@@ -209,7 +200,6 @@ class Home extends Component {
         })
         console.log(resultList)
       }
-      console.log(resultList)
     })
     return resultList
   }

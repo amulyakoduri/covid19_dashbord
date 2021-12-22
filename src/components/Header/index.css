@@ -68,3 +68,84 @@
 .active-text {
   color: #f8fafc;
 }
+
+@media screen and (max-width: 769px) {
+  .logo-text {
+    display: none;
+  }
+  .nav-mobile-container {
+    position: absolute;
+    width: 360px;
+    height: 56px;
+    left: 0px;
+    top: 0px;
+    background: #1e1e30;
+  }
+  .logo-mobile-text {
+    position: absolute;
+    width: 104px;
+    height: 24px;
+    left: 24px;
+    top: 16px;
+
+    font-family: Bree Serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    /* identical to box height, or 150% */
+
+    text-align: center;
+
+    /* Light / blue-gray / 50 */
+
+    color: #f8fafc;
+  }
+  .options-img {
+    position: absolute;
+    left: 86.67%;
+    right: 6.67%;
+    top: 2.45%;
+    bottom: 93.88%;
+  }
+  .mobile-home {
+    position: absolute;
+    left: 8.89%;
+    right: 79.44%;
+    top: 12.5%;
+    bottom: 83.44%;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 26px;
+    /* identical to box height, or 162% */
+
+    letter-spacing: -0.355556px;
+
+    /* Light / blue-gray / 400 */
+
+    color: #94a3b8;
+  }
+  .mobile-about {
+    position: absolute;
+    left: 27.22%;
+    right: 61.11%;
+    top: 12.5%;
+    bottom: 83.44%;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 26px;
+    /* identical to box height, or 162% */
+
+    letter-spacing: -0.355556px;
+
+    /* Light / blue-gray / 400 */
+
+    color: #94a3b8;
+  }
+}

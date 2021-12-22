@@ -77,17 +77,17 @@
 @media screen and (max-width: 768px) {
   .about-container {
     position: relative;
-    width: 800px;
-    height: 2000px;
-
+    width: 360px;
+    height: 1613px;
+    flex-grow: grow;
     background: #161625;
   }
   .about {
     position: absolute;
     width: 65px;
     height: 32px;
-    left: 34px;
-    top: 84px;
+    left: 24px;
+    top: 88px;
 
     font-family: Roboto;
     font-style: normal;
@@ -104,8 +104,8 @@
     position: absolute;
     width: 206px;
     height: 16px;
-    left: 34px;
-    top: 124px;
+    left: 24px;
+    top: 132px;
 
     font-family: Roboto;
     font-style: normal;
@@ -121,8 +121,8 @@
     position: absolute;
     width: 312px;
     height: 48px;
-    left: 34px;
-    top: 144px;
+    left: 24px;
+    top: 172px;
 
     font-family: Roboto;
     font-style: normal;
@@ -137,12 +137,10 @@
   }
   .list {
     position: absolute;
-    width: 480px;
-    right: 50px;
-    height: 36px;
+    width: 330px;
     left: 0px;
-    top: 180px;
-    list-style-type: none;
-    text-decoration: none;
+    top: 210px;
+    height: 1409px;
+    overflow-y: scroll;
   }
 }

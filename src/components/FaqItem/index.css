@@ -34,7 +34,7 @@
     font-family: Roboto;
     font-style: normal;
     font-weight: 500;
-    font-size: 16px;
+    font-size: 10px;
     line-height: 24px;
     /* or 150% */
 
@@ -43,10 +43,11 @@
     color: #e2e8f0;
   }
   .answer {
+    margin-top: -1px;
     font-family: Roboto;
     font-style: normal;
     font-weight: 500;
-    font-size: 14px;
+    font-size: 10px;
     line-height: 24px;
     /* or 171% */
 
