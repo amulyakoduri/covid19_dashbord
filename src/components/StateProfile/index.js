@@ -1,28 +1,19 @@
+import {Link} from 'react-router-dom'
+import {BiChevronRightSquare} from 'react-icons/bi'
 import './index.css'
 
 const StateProfile = props => {
-  const {statesDetails, updateSearchInput} = props
-  const {stateCode, stateName} = statesDetails
-
-  const onClickSuggestion = () => {
-    updateSearchInput(stateCode)
-  }
+  const {stateCode, stateName, id} = props
 
   return (
     <li className="suggestion-list">
-      <p className="state-name">{stateName}</p>
-      <button
-        type="button"
-        onClick={onClickSuggestion}
-        className="button-container"
-      >
-        <p className="state-code">{stateCode}</p>
-        <img
-          src="https://res.cloudinary.com/drnjmmqvg/image/upload/v1640018348/Line_lwzjio.png"
-          className="button-img"
-          alt="button img"
-        />
-      </button>
+      <Link to={`/states/${id}`}>
+        <p className="state-name">{stateName}</p>
+        <button type="button" className="button-container">
+          <p className="state-code">{stateCode}</p>
+          <BiChevronRightSquare className="button-img" />
+        </button>
+      </Link>
     </li>
   )
 }
