@@ -1,99 +1,44 @@
 .footer-container {
   display: flex;
   flex-direction: column;
-  background: #161625;
+  align-items: center;
+  background-color: #161625;
+  width: 100%;
+  padding: 7px;
+  margin-top: auto;
 }
 
-.footer-heading {
-  position: absolute;
-  width: 156px;
-  height: 32px;
-  left: 642px;
-  top: 1260px;
-
+.logo {
   font-family: Bree Serif;
   font-style: normal;
   font-weight: normal;
   font-size: 24px;
   line-height: 32px;
-  /* identical to box height, or 133% */
-
-  text-align: center;
-
-  /* Light / blue-gray / 50 */
-
   color: #f8fafc;
+  text-align: center;
+}
+.india {
+  color: #3b82f6;
 }
 
-.india-text {
-  color: #007bff;
-}
-
-.footer-paragraph {
-  position: absolute;
-  width: 348px;
-  height: 24px;
-  left: 546px;
-  top: 1316px;
-
+.tagline {
   font-family: Roboto;
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
   line-height: 24px;
-  /* identical to box height, or 150% */
-
   text-align: center;
-
-  /* Light / blue-gray / 400 */
-
   color: #94a3b8;
 }
 
-.icon-container {
-  display: flex;
-}
-
-.git {
-  position: absolute;
-  left: 40.76%;
-  right: 56.32%;
-  top: 90.2%;
-  bottom: 6.77%;
-
-  /* Light / blue-gray / 300 */
-
-  border: 0px solid #cbd5e1;
-  box-sizing: border-box;
-  color: #cbd5e1;
-}
-.instagram {
-  position: absolute;
-  height: 61px;
-  left: 48.12%;
-  right: 48.61%;
-  top: calc(50% - 61px / 2 + 634px);
-
-  font-family: Font Awesome 5 Brands;
+.icon {
   font-style: normal;
   font-weight: normal;
-  font-size: 52.9233px;
-  line-height: 61px;
-  /* identical to box height */
-
+  font-size: 45.9233px;
+  line-height: 55px;
   text-align: center;
-
-  /* Light / blue-gray / 300 */
-
   color: #cbd5e1;
-}
-.twitter {
-  position: absolute;
-  width: 49px;
-  height: 40px;
-  left: 804px;
-  top: 2888px;
-  color: #cbd5e1;
+  margin: 0px 32px;
 }
 
 @media screen and (max-width: 768px) {

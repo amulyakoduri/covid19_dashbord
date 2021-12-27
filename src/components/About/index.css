@@ -73,6 +73,9 @@
   list-style-type: none;
   text-decoration: none;
 }
+.footer-card {
+  margin-top: 1150px;
+}
 
 .loader-container {
   position: absolute;

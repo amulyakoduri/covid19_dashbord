@@ -18,7 +18,7 @@ const TotalStates = props => {
   return (
     <li className="list-all-cases">
       <div className="states-container-home">
-        <Link to={`/states/${stateCode}`} className="link-home">
+        <Link to={`/state/${stateCode}`} className="link-home">
           <p className="state-names-home">{stateName}</p>
         </Link>
       </div>

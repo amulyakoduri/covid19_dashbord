@@ -67,9 +67,11 @@ class About extends Component {
                 <FaqItem key={eachFaq.qno} faqDetails={eachFaq} />
               ))}
             </ul>
+            <div className="footer-card">
+              <Footer />
+            </div>
           </div>
         )}
-        <Footer />
       </div>
     )
   }

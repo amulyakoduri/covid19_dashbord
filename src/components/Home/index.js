@@ -179,7 +179,6 @@ class Home extends Component {
     const response = await fetch(apiUrl, options)
     if (response.ok === true) {
       const data = await response.json()
-      console.log(data)
       let nationalWiseActiveCases = 0
       let nationalWiseConformedCases = 0
       let nationalWiseRecoveredCases = 0
@@ -368,7 +367,11 @@ class Home extends Component {
         <hr className="line" />
         <ul className="state-details-list">
           {stateDetails.map(eachState => (
-            <TotalStates key={eachState.stateCode} stateCases={eachState} />
+            <TotalStates
+              key={eachState.stateCode}
+              stateCases={eachState}
+              id={eachState.stateCode}
+            />
           ))}
         </ul>
       </div>
@@ -418,9 +421,11 @@ class Home extends Component {
             <div>
               <div>{this.renderList()}</div>
               <div>{this.renderListOfStates()}</div>
+              <div className="footer-item">
+                <Footer />
+              </div>
             </div>
           )}
-          <Footer />
         </div>
       </>
     )

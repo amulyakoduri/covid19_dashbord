@@ -7,7 +7,7 @@ const StateProfile = props => {
 
   return (
     <li className="suggestion-list">
-      <Link to={`/states/${id}`}>
+      <Link to={`/state/${id}`}>
         <p className="state-name">{stateName}</p>
         <button type="button" className="button-container">
           <p className="state-code">{stateCode}</p>
