@@ -307,12 +307,9 @@ class Home extends Component {
     )
   }
 
-  renderLoadingView = () => (
-    <div
-      className="products-details-loader-container loader-container"
-      testid="homeRouteLoader"
-    >
-      <Loader type="ThreeDots" color="#0b69ff" height="50" width="50" />
+  renderLoader = () => (
+    <div className="loader-container" testid="homeRouteLoader">
+      <Loader type="TailSpin" color="#0b69ff" height={50} width={50} />
     </div>
   )
 

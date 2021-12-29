@@ -11,6 +11,7 @@ const App = () => (
     <Route exact path="/" component={Home} />
     <ProtectedRoute path="/about" component={About} />
     <ProtectedRoute path="/state/:stateCode" component={StateWiseData} />
+
     <Route path="/not-found" component={NotFound} />
     <Redirect to="/not-found" />
   </Switch>

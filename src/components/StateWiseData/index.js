@@ -1,9 +1,13 @@
 import {Component} from 'react'
 import Loader from 'react-loader-spinner'
-import StateTotalData from '../StateTotalData'
-import DistrictData from '../DistrictData'
+
 import Header from '../Header'
 import Footer from '../Footer'
+
+import DistrictData from '../DistrictData'
+import StateTotalData from '../StateTotalData'
+import ChartsData from '../ChartsData'
+
 import './index.css'
 
 const statesList = [
@@ -153,19 +157,18 @@ const statesList = [
   },
 ]
 
-class StateWiseData extends Component {
+class StateWiseCases extends Component {
   state = {
     isLoading: true,
     activeTab: true,
     category: 'Confirmed',
-    eachStateTotalData: [],
-    nameOfTheState: '',
-    totalTestedData: '',
-    date: '',
-    stateId: '',
     dataArray: [],
-    districtsNameList: [],
-    eachDistrict: '',
+    eachStateTotalData: [],
+    nameOfState: '',
+    stateId: '',
+    stateCode: '',
+    totalTestedData: 0,
+    date: '',
   }
 
   componentDidMount() {
@@ -176,119 +179,37 @@ class StateWiseData extends Component {
     const {match} = this.props
     const {params} = match
     const {stateCode} = params
-    const apiUrl = `https://apis.ccbp.in/covid19-state-wise-data`
+    const apiUrl = `https://apis.ccbp.in/covid19-state-wise-data/`
     const options = {
       method: 'GET',
     }
     const response = await fetch(apiUrl, options)
-    console.log(response)
-    let data
-    let stateName
-    let stateWiseTestedData
-    let updatedDate
-    let eachState
-    let district
-    let districtsList
     if (response.ok) {
-      data = await response.json()
-      console.log(data)
-      stateWiseTestedData = data[stateCode].total.tested
+      const data = await response.json()
+      const stateTastedData = data[stateCode].total.tested
       const stateObject = statesList.filter(
         each => each.state_code === stateCode,
       )
-      eachState = data[stateCode].total
-      stateName = stateObject[0].state_name
-      updatedDate = new Date(data[stateCode].meta.date)
-      district = data[stateCode].districts
-      districtsList = Object.keys(district)
+      const eachState = data[stateCode].total
+      const stateName = stateObject[0].state_name
+      const dateData = new Date(data[stateCode].meta.last_updated)
       this.setState({
         isLoading: false,
         eachStateTotalData: eachState,
-        nameOfTheState: stateName,
-        totalTestedData: stateWiseTestedData,
-        date: updatedDate,
+        totalTestedData: stateTastedData,
+        nameOfState: stateName,
         stateId: stateCode,
         dataArray: data,
-        eachDistrict: district,
-        districtsNameList: districtsList,
+        date: dateData,
+        stateCode,
       })
+    } else {
+      console.log('Fetch Error')
     }
   }
 
   onGetCategory = categoryVal => {
     this.setState({category: categoryVal, activeTab: false})
-  }
-
-  renderCategoryWiseData = () => {
-    const {category, eachDistrict, districtsNameList} = this.state
-    const categoryLower = category.toLowerCase()
-
-    const categoryData = districtsNameList.map(element => ({
-      distName: element,
-      value: eachDistrict[element].total[categoryLower]
-        ? eachDistrict[element].total[categoryLower]
-        : 0,
-    }))
-    categoryData.sort((a, b) => b.value - a.value)
-
-    const activeCases = districtsNameList.map(element => ({
-      distName: element,
-      value:
-        eachDistrict[element].total.confirmed -
-        (eachDistrict[element].total.recovered +
-          eachDistrict[element].total.deceased)
-          ? eachDistrict[element].total.confirmed -
-            (eachDistrict[element].total.recovered +
-              eachDistrict[element].total.deceased)
-          : 0,
-    }))
-    activeCases.sort((a, b) => b.value - a.value)
-
-    const data = categoryLower === 'active' ? activeCases : categoryData
-
-    return (
-      <ul className="districts-list" testid="topDistrictsUnorderedList">
-        {data.map(each => (
-          <DistrictData
-            key={each.distName}
-            name={each.distName}
-            number={each.value}
-          />
-        ))}
-      </ul>
-    )
-  }
-
-  renderStateView = () => {
-    const {
-      nameOfTheState,
-      totalTestedData,
-      date,
-      eachStateTotalData,
-      activeTab,
-    } = this.state
-    return (
-      <div className="specific-state-container">
-        <Header />
-        <div className="state-name-container">
-          <h1 className="specific-state-name">{nameOfTheState}</h1>
-        </div>
-        <p className="tested">Tested</p>
-        <p className="test-count">{totalTestedData}</p>
-        <p className="date">{`Last update on ${date}`}</p>
-        <div className="country-stats">
-          <StateTotalData
-            eachStateTotalData={eachStateTotalData}
-            onGetCategory={this.onGetCategory}
-            active={activeTab}
-          />
-        </div>
-        <div>
-          <h1 className="top-districts">Top Districts</h1>
-          <div>{this.renderCategoryWiseData()}</div>
-        </div>
-      </div>
-    )
   }
 
   renderLoader = () => (
@@ -297,13 +218,120 @@ class StateWiseData extends Component {
     </div>
   )
 
-  render() {
+  getCategoryWiseData = () => {
+    const {category, stateId, dataArray} = this.state
+    const districtOutput = dataArray[stateId].districts
+    const distNamesList = Object.keys(districtOutput)
+    const categoryLower = category.toLowerCase()
+
+    const categoryData = distNamesList.map(element => ({
+      distName: element,
+      value: districtOutput[element].total[categoryLower]
+        ? districtOutput[element].total[categoryLower]
+        : 0,
+    }))
+
+    categoryData.sort((a, b) => b.value - a.value)
+
+    const activeCases = distNamesList.map(element => ({
+      distName: element,
+      value:
+        districtOutput[element].total.confirmed -
+        (districtOutput[element].total.recovered +
+          districtOutput[element].total.deceased)
+          ? districtOutput[element].total.confirmed -
+            (districtOutput[element].total.recovered +
+              districtOutput[element].total.deceased)
+          : 0,
+    }))
+    activeCases.sort((a, b) => b.value - a.value)
+
+    if (categoryLower === 'active') {
+      return activeCases
+    }
+    return categoryData
+  }
+
+  renderStateView = () => {
+    const {
+      activeTab,
+      totalTestedData,
+      eachStateTotalData,
+      nameOfState,
+      date,
+      category,
+      stateCode,
+    } = this.state
+
+    const catData = this.getCategoryWiseData()
+
     return (
-      <div>
-        <p>{this.renderStateView()}</p>
-      </div>
+      <>
+        <div className="state-name-row">
+          <h1 className="state-title">{nameOfState}</h1>
+          <div className="testNo-container">
+            <p className="test-title">Tested</p>
+            <p className="testNo">{totalTestedData}</p>
+          </div>
+        </div>
+
+        <div>
+          <p className="last-date">{`last update on ${date}`}</p>
+        </div>
+
+        <div className="align-center-row">
+          <div className="country-stats">
+            <StateTotalData
+              onGetCategory={this.onGetCategory}
+              eachStateTotalData={eachStateTotalData}
+              active={activeTab}
+            />
+          </div>
+        </div>
+
+        <div className="total-district-data-block">
+          <h1 className={`district-heading ${category}-color`}>
+            Top Districts
+          </h1>
+          <div className="ul-parent-list">
+            <div className="district-data-ul-list">
+              <ul
+                className="districts-container"
+                testid="topDistrictsUnorderedList"
+              >
+                {catData.map(each => (
+                  <DistrictData
+                    key={each.distName}
+                    number={each.value}
+                    name={each.distName}
+                  />
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div className="graphs-data" testid="lineChartsContainer">
+            <ChartsData stateCode={stateCode} category={category} />
+          </div>
+        </div>
+      </>
+    )
+  }
+
+  render() {
+    const {isLoading} = this.state
+    return (
+      <>
+        <Header />
+        <div className="single-state-main-container">
+          <div className="state-content-container">
+            {isLoading ? this.renderLoader() : this.renderStateView()}
+          </div>
+        </div>
+        <Footer />
+      </>
     )
   }
 }
 
-export default StateWiseData
+export default StateWiseCases

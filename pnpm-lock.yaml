@@ -10673,6 +10673,14 @@ packages:
       react-is: 16.13.1
     resolution:
       integrity: sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
+  /prop-types/15.8.0:
+    dependencies:
+      loose-envify: 1.4.0
+      object-assign: 4.1.1
+      react-is: 16.13.1
+    dev: false
+    resolution:
+      integrity: sha512-fDGekdaHh65eI3lMi5OnErU6a8Ighg2KjcjQxO7m8VHyWjcPyj5kiOgV1LQDOOOgVy3+5FgjXvdSSX7B8/5/4g==
   /proxy-addr/2.0.7:
     dependencies:
       forwarded: 0.2.0
@@ -10947,7 +10955,7 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha512-X8jZHc7nCMjaCqoU+V2I0cOhNW+QMBwSUkeXnTi8IPe6zaRWfn60ZzvFDZqWPfmSJfjub7dDW1SP0jaHWLu/hg==
-  /react-resize-detector/6.7.6_react-dom@17.0.1+react@17.0.1:
+  /react-resize-detector/6.7.7_react-dom@17.0.1+react@17.0.1:
     dependencies:
       '@types/resize-observer-browser': 0.1.6
       lodash.debounce: 4.0.8
@@ -10960,7 +10968,7 @@ packages:
       react: ^16.0.0 || ^17.0.0
       react-dom: ^16.0.0 || ^17.0.0
     resolution:
-      integrity: sha512-/6RZlul1yePSoYJxWxmmgjO320moeLC/khrwpEVIL+D2EjLKhqOwzFv+H8laMbImVj7Zu4FlMa0oA7au3/ChjQ==
+      integrity: sha512-91QlSn3IpeLWX6aP7GDIH2IFGNR9hs8oD5xvjZdDFW9Zr27dFiTpzhIoC96T4ahHd/3Au64JUNiynpkf4Z0Zkg==
   /react-router-dom/5.3.0_react@17.0.1:
     dependencies:
       '@babel/runtime': 7.16.5
@@ -11126,7 +11134,7 @@ packages:
     dependencies:
       dom-helpers: 3.4.0
       loose-envify: 1.4.0
-      prop-types: 15.7.2
+      prop-types: 15.8.0
       react: 17.0.1
       react-dom: 17.0.1_react@17.0.1
       react-lifecycles-compat: 3.0.4
@@ -11248,7 +11256,7 @@ packages:
       react: 17.0.1
       react-dom: 17.0.1_react@17.0.1
       react-is: 16.13.1
-      react-resize-detector: 6.7.6_react-dom@17.0.1+react@17.0.1
+      react-resize-detector: 6.7.7_react-dom@17.0.1+react@17.0.1
       react-smooth: 2.0.0_react-dom@17.0.1+react@17.0.1
       recharts-scale: 0.4.5
       reduce-css-calc: 2.1.8

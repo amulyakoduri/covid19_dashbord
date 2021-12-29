@@ -1,54 +1,78 @@
-import {Link, withRouter} from 'react-router-dom'
+import {Component} from 'react'
+import {Link} from 'react-router-dom'
+import {ImMenu2} from 'react-icons/im'
+
 import './index.css'
 
-const Header = props => {
-  const {isActive} = props
-  const activeText = isActive ? 'active-text' : ''
+class Header extends Component {
+  state = {isToggleActive: false}
 
-  const onClickOptions = () => (
-    <ul className="">
-      <Link to="/">
-        <li className="mobile-home">Home</li>
-      </Link>
-      <Link to="/about">
-        <li className="mobile-about">About</li>
-      </Link>
-    </ul>
+  whenToggleButtonClick = () => {
+    this.setState(prevState => ({isToggleActive: !prevState.isToggleActive}))
+  }
+
+  showDropDownMenu = () => (
+    <>
+      <ul className="navBar">
+        <Link to="/" className="link">
+          <li className="item">Home</li>
+        </Link>
+        <Link to="/about" className="link">
+          <li className="item">About</li>
+        </Link>
+        <Link to="/vaccination" className="link">
+          <li className="item">Vaccination</li>
+        </Link>
+      </ul>
+    </>
   )
 
-  return (
-    <nav>
-      <div className="nav-container">
-        <Link to="/">
-          <h1 className="logo-text">
-            COVID19<span className="india-text">INDIA</span>
-          </h1>
-        </Link>
-        <ul>
-          <Link to="/">
-            <h1 className={`home-text ${activeText}`}>Home</h1>
+  render() {
+    const {isToggleActive} = this.state
+    console.log(isToggleActive)
+    return (
+      <>
+        <div className="header-container">
+          <Link to="/" className="link">
+            <h1 className="logo">
+              COVID19<spam className="india">INDIA</spam>
+            </h1>
           </Link>
-          <Link to="/about">
-            <h1 className={`about-text ${activeText}`}>About</h1>
-          </Link>
-        </ul>
-      </div>
-      <div className="mobile-nav-container">
-        <Link to="/">
-          <h1 className="logo-mobile-text">
-            COVID19<span className="india-text">INDIA</span>
-          </h1>
-          <button type="button" onClick={onClickOptions}>
-            <img
-              src="https://res.cloudinary.com/drnjmmqvg/image/upload/v1640070790/add-to-queue_1_yprekp.png"
-              className="options-img"
-              alt="options img"
-            />
-          </button>
-        </Link>
-      </div>
-    </nav>
-  )
+          <ul className="navBar">
+            <Link to="/" className="link">
+              <li className="item">Home</li>
+            </Link>
+            <Link to="/about" className="link">
+              <li className="item">About</li>
+            </Link>
+
+            <Link to="/vaccination" className="link">
+              <li className="item">Vaccination</li>
+            </Link>
+          </ul>
+        </div>
+        <div className="mobile-menu">
+          <div className="mobile-header-container">
+            <Link to="/" className="link">
+              <h1 className="logo">
+                COVID19<spam className="india">INDIA</spam>
+              </h1>
+            </Link>
+            <button
+              type="button"
+              className="toggle-button"
+              onClick={this.whenToggleButtonClick}
+            >
+              <ImMenu2 className="menuIcon" alt="menu" />
+            </button>
+          </div>
+          <div className="menu">
+            {isToggleActive ? this.showDropDownMenu() : null}
+          </div>
+        </div>
+      </>
+    )
+  }
 }
 
-export default withRouter(Header)
+export default Header
