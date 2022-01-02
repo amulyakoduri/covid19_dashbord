@@ -318,6 +318,7 @@ class Home extends Component {
       <div className="all-states-table" testid="stateWiseCovidDataTable">
         <div className="table-header">
           <div className="state-name-heading">
+            <p className="table-header-title ">States/UT</p>
             <button
               className="order"
               type="button"
@@ -326,7 +327,6 @@ class Home extends Component {
             >
               <FcGenericSortingAsc className="order-icon" />
             </button>
-            <p className="table-header-title ">States/UT</p>
             <button
               className="order"
               type="button"
