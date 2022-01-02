@@ -16,7 +16,6 @@
 .link-home {
   list-style-type: none;
   text-decoration: none;
-  color: #f1f5f9;
 }
 
 .states-names-home {
@@ -25,7 +24,7 @@
   font-weight: 500;
   font-size: 14px;
   line-height: 24px;
-
+  color: #f1f5f9;
   padding: 0px 32px;
 }
 
@@ -36,7 +35,6 @@
   font-size: 14px;
   line-height: 24px;
   color: #ff073a;
-  margin-left: 50px;
 }
 
 .active-home {
@@ -46,7 +44,6 @@
   font-size: 14px;
   line-height: 24px;
   color: #007bff;
-  margin-left: 50px;
 }
 
 .recovered-home {
@@ -56,7 +53,6 @@
   font-size: 14px;
   line-height: 24px;
   color: #28a745;
-  margin-left: 50px;
 }
 
 .deceased-home {
@@ -66,7 +62,6 @@
   font-size: 14px;
   line-height: 24px;
   color: #6c757d;
-  margin-left: 70px;
 }
 .population-home {
   font-family: Roboto;
@@ -75,5 +70,4 @@
   font-size: 14px;
   line-height: 24px;
   color: #94a3b8;
-  margin-left: 50px;
 }
